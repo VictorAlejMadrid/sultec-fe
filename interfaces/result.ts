@@ -10,10 +10,13 @@ export type PaginatedResult<T> = {
   data: T[];
   code: number;
   errors: string[];
-  pagination: {
-    pageNumber: number;
-    pageSize: number;
-    totalItems: number;
-    hasNextPage: boolean;
-  };
+  pagination: Pagination;
+};
+
+export type Pagination = {
+  pageNumber: number;
+  pageSize: number;
+  totalItems: number;
+  totalPages: number;
+  hasNextPage: boolean;
 };
