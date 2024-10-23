@@ -1,20 +1,23 @@
+'use client';
+
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import { SelectItemText } from '@radix-ui/react-select';
-import { ClientFilter } from '../../page';
+import { ClientFilter } from '../../useClientsPage';
 
 interface IClientFilters {
   street: string;
   setStreet: (value: string) => void;
   filterValue: ClientFilter;
   setFilterValue: (value: ClientFilter) => void;
+  onEnterPress: () => void;
 }
 
 export default function ClientFilters(props: IClientFilters) {
-  const { filterValue, setFilterValue, setStreet, street } = props;
+  const { filterValue, setFilterValue, setStreet, street, onEnterPress } = props;
   const onButtonPress = (key: string) => {
     if (key === 'Enter') {
-      console.log('aaa');
+      onEnterPress();
     }
   };
   return (
