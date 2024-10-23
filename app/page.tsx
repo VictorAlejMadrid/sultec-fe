@@ -4,7 +4,6 @@ import ClientCard from '@/components/ClientCard';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
-import { cn } from '@/lib/utils';
 import { getPaginatedClients } from '@/resourses/api/clients';
 import { SelectItemText } from '@radix-ui/react-select';
 import { useQuery } from '@tanstack/react-query';
@@ -57,7 +56,7 @@ export default function Home() {
 
       <Separator />
 
-      <div className={'w-full flex flex-col gap-2 h-[450px] overflow-y-scroll'}>
+      <div className={'w-full flex flex-col h-[70%] gap-2 overflow-y-scroll'}>
         {data?.data.map((client) => {
           return <ClientCard client={client} />;
         })}
