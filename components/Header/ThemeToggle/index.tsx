@@ -20,11 +20,7 @@ export default function ThemeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="bg-blue-500 focus:outline-none focus:border-white rounded-full text-white py-2 px-4 hover:bg-accent hover:text-accent-foreground">
-        {resolvedTheme === 'dark' ? (
-          <MoonIcon suppressHydrationWarning />
-        ) : (
-          <SunIcon suppressHydrationWarning />
-        )}
+        {resolvedTheme === 'dark' ? <MoonIcon /> : <SunIcon />}
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40">
         <DropdownMenuLabel className="text-center">Alterar tema</DropdownMenuLabel>
@@ -44,9 +40,8 @@ export default function ThemeToggle() {
               value="light"
               onClick={() => setTheme('light')}
               title="Mudar para tema claro"
-              suppressHydrationWarning
             >
-              <SunIcon suppressHydrationWarning />
+              <SunIcon />
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem
               className={`p-2 rounded-full ${theme === 'system' && 'bg-blue-500 text-white'}`}
