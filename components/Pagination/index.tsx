@@ -15,9 +15,14 @@ import { UseMutateFunction } from '@tanstack/react-query';
 interface IPaginationComponent {
   pagination: PaginationType;
   mutate: UseMutateFunction<PaginatedResult<any>, Error, number, unknown>;
+  className?: string;
 }
 
-export default function PaginationComponent({ pagination, mutate }: IPaginationComponent) {
+export default function PaginationComponent({
+  pagination,
+  mutate,
+  className,
+}: IPaginationComponent) {
   const { getFirstPage, getPreviousPage, getNextPage, getLastPage } = usePagination(
     pagination,
     mutate
@@ -28,7 +33,7 @@ export default function PaginationComponent({ pagination, mutate }: IPaginationC
   const stylePageLink = cn('hover:cursor-pointer hover:bg-gray-200 rounded-md hover:text-black');
 
   return (
-    <Pagination className="w-full">
+    <Pagination className={cn('w-full', className)}>
       <PaginationContent className="flex w-full justify-between">
         <PaginationItem>
           <PaginationPrevious onClick={() => getPreviousPage()} className={stylePageLink} />

@@ -10,7 +10,7 @@ export default function Clients() {
     useClientsPage();
 
   return (
-    <div className="flex-col flex items-center justify-items-center w-full gap-3">
+    <div className="flex-col flex items-center w-full h-[100%-90px] gap-3 mt-2 mb-8">
       <h3>Encontrar clientes</h3>
       <ClientFilters
         filterValue={filterValue}

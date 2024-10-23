@@ -7,7 +7,7 @@ import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
   return (
-    <header className="z-40 w-full h-[80px] bg-blue-700 flex items-center justify-between px-5">
+    <header className="z-40 w-full h-[80px] bg-blue-700 flex items-center justify-between px-5 py-2">
       <Image
         priority={true}
         alt="Logo da Sultec"
