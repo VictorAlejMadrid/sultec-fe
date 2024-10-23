@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <AppProvider>
           <Header />
-          <main className="mt-[20px] flex flex-1 max-h-[calc(100vh-100px)] min-h-96 w-[650px] m-4">
+          <main className="flex flex-1 max-h-[calc(100vh-150px)] min-h-96 w-[650px] m-4">
             {children}
           </main>
         </AppProvider>
