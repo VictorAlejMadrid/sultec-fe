@@ -17,7 +17,7 @@ export default function ClientTable(props: IClientTable) {
 
   return (
     <>
-      <div className={'w-full flex flex-col flex-1 gap-2 overflow-y-auto scroll-smooth'}>
+      <div className="w-full flex flex-col flex-1 gap-2 overflow-y-auto scroll-smooth">
         {clients.data.map((client) => {
           return <ClientCard key={client.id} client={client} />;
         })}
