@@ -4,8 +4,9 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import { SelectItemText } from '@radix-ui/react-select';
 import { ClientFilter } from '../../useClientsPage';
+import { Button } from '@/components/ui/button';
 
-interface IClientFilters {
+interface IClientConfigs {
   street: string;
   setStreet: (value: string) => void;
   filterValue: ClientFilter;
@@ -13,7 +14,7 @@ interface IClientFilters {
   onEnterPress: () => void;
 }
 
-export default function ClientFilters(props: IClientFilters) {
+export default function ClientConfigs(props: IClientConfigs) {
   const { filterValue, setFilterValue, setStreet, street, onEnterPress } = props;
   const onButtonPress = (key: string) => {
     if (key === 'Enter') {
@@ -22,6 +23,8 @@ export default function ClientFilters(props: IClientFilters) {
   };
   return (
     <div className="flex flex-row gap-4 w-full">
+      <Button className="bg-blue-600 text-white hover:bg-blue-700">Adicionar cliente</Button>
+
       <Input
         placeholder="Buscar por endereço"
         value={street}
