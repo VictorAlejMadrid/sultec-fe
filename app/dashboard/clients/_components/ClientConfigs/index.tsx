@@ -5,6 +5,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/u
 import { SelectItemText } from '@radix-ui/react-select';
 import { ClientFilter } from '../../useClientsPage';
 import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from '@/components/ui/dialog';
 
 interface IClientConfigs {
   street: string;
@@ -23,7 +32,23 @@ export default function ClientConfigs(props: IClientConfigs) {
   };
   return (
     <div className="flex flex-row gap-4 w-full">
-      <Button className="bg-blue-600 text-white hover:bg-blue-700">Adicionar cliente</Button>
+      <Dialog>
+        <DialogTrigger suppressHydrationWarning>
+          <Button variant="sultec" suppressHydrationWarning>
+            Adicionar cliente
+          </Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Adicionar cliente</DialogTitle>
+            <DialogDescription>Adicione um cliente com ou sem endereço</DialogDescription>
+          </DialogHeader>
+          <section></section>
+          <DialogFooter>
+            <Button variant="sultec">Adicionar</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <Input
         placeholder="Buscar por endereço"
