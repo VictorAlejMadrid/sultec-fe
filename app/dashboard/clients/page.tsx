@@ -1,18 +1,28 @@
 'use client';
 
 import { Separator } from '@/components/ui/separator';
-import ClientFilters from './_components/ClientFilters';
-import ClientTable from './_components/ClientTable';
+import ClientConfigs from './_components/ClientConfigs';
 import useClientsPage from './useClientsPage';
+import { Loader2Icon } from 'lucide-react';
+import ClientTable from './_components/ClientTable';
 
 export default function Clients() {
-  const { filterValue, setFilterValue, street, setStreet, data, mutate, onEnterPress } =
-    useClientsPage();
+  const {
+    filterValue,
+    setFilterValue,
+    street,
+    setStreet,
+    data,
+    mutate,
+    onEnterPress,
+    isPending,
+    isError,
+  } = useClientsPage();
 
   return (
     <div className="flex-col flex items-center w-full h-[100%-90px] gap-3 mt-2 mb-8">
       <h3>Encontrar clientes</h3>
-      <ClientFilters
+      <ClientConfigs
         filterValue={filterValue}
         setFilterValue={setFilterValue}
         setStreet={setStreet}
@@ -22,7 +32,11 @@ export default function Clients() {
 
       <Separator />
 
+      {isPending && <Loader2Icon className="animate-spin" />}
+
       {data && <ClientTable clients={data} pagination={data.pagination} mutate={mutate} />}
+
+      {isError && <div>Ocorreu um erro ao carregar os dados. Verifique sua conexão.</div>}
     </div>
   );
 }

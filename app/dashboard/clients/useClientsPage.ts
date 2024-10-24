@@ -8,7 +8,7 @@ export default function useClientsPage() {
   const [filterValue, setFilterValue] = useState<ClientFilter>('Todos');
   const [street, setStreet] = useState('');
 
-  const { data, mutate } = useMutation({
+  const { data, mutate, isPending, isError } = useMutation({
     mutationKey: ['clients'],
     mutationFn: async (page: number) => getPaginatedClients(10, page, street),
   });
@@ -31,5 +31,7 @@ export default function useClientsPage() {
     data,
     mutate,
     onEnterPress,
+    isPending,
+    isError,
   };
 }
