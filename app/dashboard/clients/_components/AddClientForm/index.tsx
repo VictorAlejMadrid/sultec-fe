@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -6,24 +8,23 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import RequiredAsterisk from '@/components/UtilComponents/RequiredAsterisk';
 import useClientForm from './useClientForm';
 import { capitalize } from '@/lib/Utils/formatters';
+import { useState } from 'react';
 
 export default function AddClientForm() {
   const { phoneNumber, handlePhoneNumberChange, onSubmit, form } = useClientForm();
+  const [formOpen, setFormOpen] = useState(false);
 
   return (
-    <Dialog>
-      <DialogTrigger suppressHydrationWarning>
-        <Button variant="sultec" suppressHydrationWarning>
-          Adicionar cliente
-        </Button>
-      </DialogTrigger>
+    <Dialog open={formOpen} onOpenChange={() => setFormOpen(false)}>
+      <Button variant="sultec" onClick={() => setFormOpen(true)}>
+        Adicionar cliente
+      </Button>
 
       <DialogContent>
         <DialogHeader>
