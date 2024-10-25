@@ -3,8 +3,11 @@
 import { Separator } from '@/components/ui/separator';
 import ClientConfigs from './_components/ClientConfigs';
 import useClientsPage from './useClientsPage';
-import { Loader2Icon } from 'lucide-react';
-import ClientTable from './_components/ClientTable';
+import ListCards from '@/components/ListCards';
+import { Pagination } from '@/interfaces/result';
+import { Skeleton } from '@/components/ui/skeleton';
+import ClientCard from '@/components/ClientCard';
+import { getArrayWithKeys } from '@/lib/utils';
 
 export default function Clients() {
   const {
@@ -32,11 +35,23 @@ export default function Clients() {
 
       <Separator />
 
-      {isPending && <Loader2Icon className="animate-spin" />}
+      <ListCards
+        mutate={mutate}
+        pagination={data?.pagination ? data.pagination : ({} as Pagination)}
+      >
+        {isPending &&
+          getArrayWithKeys(10).map((key) => <Skeleton key={key} className="w-full h-20" />)}
 
-      {data && <ClientTable clients={data} pagination={data.pagination} mutate={mutate} />}
+        {data && data.data.map((client) => <ClientCard key={client.id} client={client} />)}
 
-      {isError && <div>Ocorreu um erro ao carregar os dados. Verifique sua conexão.</div>}
+        {isError && (
+          <p className="flex justify-center text-center">
+            Ocorreu um erro ao carregar os dados.
+            <br />
+            Verifique sua conexão.
+          </p>
+        )}
+      </ListCards>
     </div>
   );
 }

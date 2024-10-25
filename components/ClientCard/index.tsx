@@ -1,8 +1,8 @@
 import { ReadClientDto } from '@/interfaces/ClientDtos/ReadClientDto';
-import AdressCard from './AdressCard';
 import { UserRound } from 'lucide-react';
 import { Separator } from '../ui/separator';
 import Link from 'next/link';
+import AddressCollapsible from './AddressCollapsible';
 
 interface IClientCard {
   client: ReadClientDto;
@@ -10,11 +10,10 @@ interface IClientCard {
 
 export default function ClientCard({ client }: IClientCard) {
   const { name, phoneNumber, id, addresses } = client;
-  const adress = addresses[0];
 
   return (
-    <Link href={`/dashboard/clients/${id}`}>
-      <div className="w-full border-2 rounded-xl border-input">
+    <div className="w-full border-2 rounded-xl border-input">
+      <Link href={`/dashboard/clients/${id}`}>
         <div className="flex py-2 px-4 gap-3 hover:cursor-pointer">
           <UserRound size={40} />
           <p>{name}</p>
@@ -26,13 +25,13 @@ export default function ClientCard({ client }: IClientCard) {
             </p>
           </div>
         </div>
-        {adress && (
-          <>
-            <Separator />
-            <AdressCard address={adress} />
-          </>
-        )}
-      </div>
-    </Link>
+      </Link>
+      {addresses.length > 0 && (
+        <>
+          <Separator />
+          <AddressCollapsible addresses={addresses} />
+        </>
+      )}
+    </div>
   );
 }

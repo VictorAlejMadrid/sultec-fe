@@ -7,6 +7,7 @@ export type ClientFilter = 'Todos' | 'Ativos' | 'Inativos';
 export default function useClientsPage() {
   const [filterValue, setFilterValue] = useState<ClientFilter>('Todos');
   const [street, setStreet] = useState('');
+  const [getClients, setGetClients] = useState(false);
 
   const { data, mutate, isPending, isError } = useMutation({
     mutationKey: ['clients'],
@@ -14,10 +15,16 @@ export default function useClientsPage() {
   });
 
   function onEnterPress() {
-    if (data) {
+    if (data && getClients) {
       mutate(data.pagination.pageNumber);
     }
+
+    setGetClients(false);
   }
+
+  useEffect(() => {
+    setGetClients(true);
+  }, [street]);
 
   useEffect(() => {
     mutate(1);

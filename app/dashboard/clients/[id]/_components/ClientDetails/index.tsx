@@ -1,5 +1,6 @@
 'use client';
 
+import ListCards from '@/components/ListCards';
 import { ReadClientDto } from '@/interfaces/ClientDtos/ReadClientDto';
 import { UserRound } from 'lucide-react';
 
@@ -8,7 +9,7 @@ export interface IClientDetails {
 }
 
 export default function ClientDetails({ client }: IClientDetails) {
-  const { id, name, phoneNumber } = client;
+  const { id, name, phoneNumber, addresses } = client;
 
   return (
     <div className="w-full my-4">
@@ -25,6 +26,11 @@ export default function ClientDetails({ client }: IClientDetails) {
       </section>
       <section className="w-full flex justify-center mt-2">
         <p>Endereços:</p>
+        <ListCards pagination={undefined}>
+          {addresses.map((address) => (
+            <p>{address.clientId}</p>
+          ))}
+        </ListCards>
       </section>
     </div>
   );
