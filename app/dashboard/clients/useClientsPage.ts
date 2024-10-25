@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 export type ClientFilter = 'Todos' | 'Ativos' | 'Inativos';
 
 export default function useClientsPage() {
-  const [filterValue, setFilterValue] = useState<ClientFilter>('Todos');
+  const [filterValue, setFilterValue] = useState<ClientFilter>('Ativos');
   const [street, setStreet] = useState('');
   const [getClients, setGetClients] = useState(false);
 
