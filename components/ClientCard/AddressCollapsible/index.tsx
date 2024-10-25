@@ -19,10 +19,10 @@ export default function AddressCollapsible({ addresses }: IAddressCollapsible) {
       </CollapsibleTrigger>
       <CollapsibleContent>
         {addresses.slice(1, addresses.length).map((address) => (
-          <>
-            <Separator key={address.street} />
-            <AddressSummary key={address.id} address={address} />
-          </>
+          <div key={address.id} className="w-full">
+            <Separator />
+            <AddressSummary address={address} />
+          </div>
         ))}
       </CollapsibleContent>
     </Collapsible>
